@@ -1,21 +1,26 @@
 class Solution {
 public:
-    vector<int> searchRange(vector<int>& arr, int target) {
-        int firstPosition = -1, lastPosition = -1;
-        for (int i = 0; i < arr.size(); i++) {
-            if (arr[i] == target) 
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int low=-1,high=-1;
+        vector<int>arr;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]==target)
             {
-                firstPosition = i;
+                low=i;
                 break;
             }
         }
-        for (int i = 0; i < arr.size(); i++)
+        for(int j=nums.size()-1;j>=0;j--)
         {
-            if (arr[i] == target) 
+            if(nums[j]==target)
             {
-                lastPosition = i;
+                high=j;
+                break;
             }
         }
-        return {firstPosition, lastPosition};
+        arr.push_back(low);
+        arr.push_back(high);
+        return arr;
     }
 };
