@@ -1,16 +1,19 @@
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
-        int left = 0, right = nums.size() - 1;
-        while (left <= right) {
-            auto mid = left + (right - left) / 2;
-            if (nums[mid] > target) {
-                right = mid - 1;
-            } else if (nums[mid] < target) {
-                left = mid + 1;
-            } else {
+    int search(vector<int>& arr, int key) {
+        int start = 0;
+        int end = arr.size() - 1;
+        int mid = start + (end - start) / 2;
+        while (start <= end) {
+            if (arr[mid] == key) {
                 return mid;
             }
+            if (arr[mid] < key) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+            mid = start + (end - start) / 2;
         }
         return -1;
     }
